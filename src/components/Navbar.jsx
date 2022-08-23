@@ -1,8 +1,20 @@
 import React from "react";
- 
-function Navbar() {
-    return <div>
-        <h1>navbar</h1>
+import {Button, Menu, Typography, Avatar} from "antd";
+import {Link} from "react-router-dom";
+import {HomeOutlined, MoneyCollecOutlined, BulbOutlined, FundOutlined, MenuOutlined} from "@ant-design/icons";
+import icon from "../images/cryptocurrency.png";
+
+function Navbar() { 
+    return <div className="nav-container">
+        <div className="logo-container">
+            <Avatar src={icon} size="large" />
+            <Typography.Title level={2} className="logo">
+                <Link to="/">
+                    Cryptoverse
+                </Link>
+            </Typography.Title>
+            
+        </div>
     </div>
 }
 
