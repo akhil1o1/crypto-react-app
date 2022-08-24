@@ -11,7 +11,7 @@ function Navbar() {
             <Avatar src={icon} size="large" />
             <Typography.Title level={2} className="logo">
                 <Link to="/">
-                    Cryptoverse
+                    CryptoWorld
                 </Link>
             </Typography.Title>
         </div>

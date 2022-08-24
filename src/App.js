@@ -1,14 +1,14 @@
 import React from "react";
-import { Routes, Route, Link } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import { Layout, Typography, Space } from "antd";
-import Navbar from './components/Navbar';
 import "./App.css";
+import Navbar from './components/Navbar';
 import HomePage from "./components/HomePage";
 import Exchanges from "./components/Exchanges";
 import CryptoDetails from "./components/CryptoDetails";
 import Cryptocurrencies from "./components/Cryptocurrencies";
 import News from "./components/News";
-
+import Footer from "./components/Footer";
 
 function App() {
     return <div className="app">
@@ -27,17 +27,7 @@ function App() {
         </Routes>
         </div>
         </Layout>
-        <div className="footer">
-            <Typography.Title level={5} style={{color: "white", textAlign:"center"}}>
-                Cryptoverse <br/>
-                All right reserved
-            </Typography.Title>
-            <Space>
-                <Link to="/">Home</Link>
-                <Link to="/exchanges">Exchanges</Link>
-                <Link to="/news">News</Link>
-            </Space>
-        </div>
+        <Footer/>
         </div>
     </div>
 }
