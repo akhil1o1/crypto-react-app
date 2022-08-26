@@ -1,6 +1,6 @@
 import 'dotenv/config';
 import {createApi, fetchBaseQuery} from "@reduxjs/toolkit/query/react";
-
+ 
 const cryptoHeaders = {
     'X-RapidAPI-Key': process.env.COINRANKING_RAPID_API_KEY,
       'X-RapidAPI-Host': 'coinranking1.p.rapidapi.com'
