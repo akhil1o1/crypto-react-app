@@ -6,7 +6,7 @@ function Footer() {
     return <div className="footer">
     <Typography.Title level={5} style={{color: "white", textAlign:"center"}}>
     CryptoWorld <br/>
-        All right reserved
+    © All right reserved
     </Typography.Title>
     <Space>
         <Link to="/">Home</Link>
