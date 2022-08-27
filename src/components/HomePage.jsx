@@ -10,8 +10,7 @@ function HomePage() {
     
     const { data, isFetching } = useGetCryptosQuery();
     const globalStats = data.data.stats;
-    console.log(isFetching);
-    console.log(globalStats);
+    
 
     if(isFetching) return "loading....";
 
