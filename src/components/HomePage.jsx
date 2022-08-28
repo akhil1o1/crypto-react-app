@@ -9,10 +9,12 @@ import News from "./News";
 function HomePage() {
     
     const { data, isFetching } = useGetCryptosQuery();
-    const globalStats = data.data.stats;
-    
 
-    if(isFetching) return "loading....";
+    if(isFetching){
+        return <h1>loading......</h1>
+    }
+    
+    const globalStats = data.data.stats;
 
     return <>
         <Typography.Title level={2}>Global Crypto Stats</Typography.Title>
