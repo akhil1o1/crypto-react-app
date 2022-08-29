@@ -376,3 +376,7 @@ width: 70%;
     padding: 20px;
     align-items: center;
 }
+.coin-image{
+    width: 15% !important;
+    margin-bottom: 10px;
+}

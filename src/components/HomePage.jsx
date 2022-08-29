@@ -8,7 +8,7 @@ import News from "./News";
 
 function HomePage() {
     
-    const { data, isFetching } = useGetCryptosQuery();
+    const { data, isFetching } = useGetCryptosQuery(10);
 
     if(isFetching){
         return <h1>loading......</h1>
@@ -33,7 +33,7 @@ function HomePage() {
             <Link to="/cryptocurrencies">show more</Link>
             </Typography.Title>
         </div>
-        <Cryptocurrencies simplified/>
+        <Cryptocurrencies simplified={true}/>
         <div className="home-heading-container">
             <Typography.Title level={2} className="home-title">
             Latest Crypto News
@@ -42,7 +42,7 @@ function HomePage() {
             <Link to="/news">show more</Link>
             </Typography.Title>
         </div>
-        <News simplified/>
+        <News simplified={true}/>
     </>
 }
 
