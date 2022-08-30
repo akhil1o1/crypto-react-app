@@ -127,6 +127,7 @@ a:hover{
     }
     .home-title{
         font-size: 1.4rem !important;
+        margin-bottom: 20px !important;
     }
     .show-more{
         font-size: 1.3rem !important;
@@ -292,20 +293,13 @@ a:hover{
 }
 .news-card{
     width: 100% !important;
-    margin-block:3% !important;
+    margin-bottom:3% !important;
 }
 .news-image-container{
     display: flex !important;
     justify-content: space-between !important;
 }
-.news-title{
-width: 70%;
-}
 
-.news-card p{
-    color: black;
-    margin: 10px 0px !important;
-}
 .provider-container{
     display: flex;
     justify-content: space-between;

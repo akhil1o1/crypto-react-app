@@ -1,6 +1,6 @@
 import React from "react";
 import millify from "millify";
-import { Typography, Row, Col, Statistic } from "antd";
+import { Typography, Row, Col, Statistic, Card } from "antd";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import { Link } from "react-router-dom";
 import Cryptocurrencies from "./Cryptocurrencies";
@@ -18,12 +18,12 @@ function HomePage() {
 
     return <>
         <Typography.Title level={2}>Global Crypto Stats</Typography.Title>
-        <Row>
-            <Col span={12}><Statistic title="Total Cryptocurrencies" value={millify(globalStats.total)}/></Col>
-            <Col span={12}><Statistic title="Total Exchanges" value={globalStats.totalExchanges}/></Col>
-            <Col span={12}><Statistic title="Total Market Cap" value={millify(globalStats.totalMarketCap)}/></Col>
-            <Col span={12}><Statistic title="Total 24h Volume" value={millify(globalStats.total24hVolume)}/></Col>
-            <Col span={12}><Statistic title="Total Markets" value={millify(globalStats.totalMarkets)}/></Col>
+        <Row gutter={[10, 10]}>
+            <Col span={12}><Card><Statistic title="Total Cryptocurrencies" value={millify(globalStats.total)}/></Card></Col>
+            <Col span={12}><Card><Statistic title="Total Exchanges" value={globalStats.totalExchanges}/></Card></Col>
+            <Col span={12}><Card><Statistic title="Total Market Cap" value={millify(globalStats.totalMarketCap)}/></Card></Col>
+            <Col span={12}><Card><Statistic title="Total 24h Volume" value={millify(globalStats.total24hVolume)}/></Card></Col>
+            <Col span={12}><Card><Statistic title="Total Markets" value={millify(globalStats.totalMarkets)}/></Card></Col>
         </Row>
         <div className="home-heading-container">
             <Typography.Title level={2} className="home-title">
@@ -35,7 +35,7 @@ function HomePage() {
         </div>
         <Cryptocurrencies simplified={true}/>
         <div className="home-heading-container">
-            <Typography.Title level={2} className="home-title">
+            <Typography.Title level={2} >
             Latest Crypto News
             </Typography.Title>
             <Typography.Title level={3} className="show-more">

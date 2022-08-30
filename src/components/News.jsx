@@ -9,7 +9,7 @@ function News({simplified}) {
 
     const { data: cryptoNews, isFetching } = useGetCryptoNewsQuery({newsCategory: "Cryptocurrency", count: simplified ? 6 : 100});
     console.log( cryptoNews);
-    const demoImage= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0vv-Up8EOfHvg-HWFmgFcUgN3sanGDUnU-g&usqp=CAU"
+    const demoImage= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0vv-Up8EOfHvg-HWFmgFcUgN3sanGDUnU-g&usqp=CAU";
 
     if(isFetching) return "loading....";
 
@@ -35,8 +35,9 @@ function News({simplified}) {
                                     <div>
                                         <Avatar src={news.provider[0]?.image?.thumbnail?.contentUrl || demoImage} alt="news provider"/>
                                         <Text className="provider-name">{news.provider[0]?.name}</Text>
+                                        <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
                                     </div>
-                                    <Text>{moment(news.datePublished).startOf('ss').fromNow()}</Text>
+                                    
                                 </div>
                             </a>
                         </Card>
