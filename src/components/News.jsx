@@ -2,7 +2,7 @@ import React from "react";
 import { Select, Typography, Row, Col, Avatar, Card } from "antd";
 import moment from "moment";
 import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
-const { Title, Text } = Typography;
+const { Text } = Typography;
 const { Option } = Select;
 
 function News({simplified}) {
@@ -14,21 +14,23 @@ function News({simplified}) {
     if(isFetching) return "loading....";
 
     return <Row gutter={[24, 24]}>
+    <Col>
             {
                 cryptoNews?.value?.map((news, index)=>(
-                    <Col xs={24} sm={12} lg={8}>
-                        <Card hoverable className="news-card">
+                    
+                        <Card hoverable className="news-card" type="inner"
+                        title={news.name}>
                             <a href={news.url} target="_blank" rel="noreferrer">
                                 <div className="news-image-container">
-                                    <Title className="news-title" level={4}>{news.name}</Title>
-                                    <img style={{width:"30%", height:"30%"}} src={news?.image?.thumbnail?.contentUrl || demoImage} alt="news"/>
-                                </div>
                                 <Text>
                                     {
-                                        news.description.length>100 ? news.description.substring(0, 100)+"..."
+                                        news.description.length>300 ? news.description.substring(0, 300)+"..."
                                         : news.description
                                     }
                                 </Text>
+                                    <img className="news-image" style={{width:"10%", height:"10%"}} src={news?.image?.thumbnail?.contentUrl || demoImage} alt="news"/>
+                                </div>
+                                
                                 <div className="provider-container">
                                     <div>
                                         <Avatar src={news.provider[0]?.image?.thumbnail?.contentUrl || demoImage} alt="news provider"/>
@@ -38,9 +40,9 @@ function News({simplified}) {
                                 </div>
                             </a>
                         </Card>
-                    </Col>
                 ))
             }
+            </Col>
     </Row>
 }
 
