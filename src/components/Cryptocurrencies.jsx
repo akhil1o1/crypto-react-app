@@ -35,10 +35,10 @@ function Cryptocurrencies({simplified}) {
             hoverable> 
             <img className="coin-image" src={currency.iconUrl} alt="coin-icon"/>
             <p>
-                Price: {millify(currency.price)}
+                Price: {`${millify(currency.price)} USD`}
             </p>
             <p>
-                Market cap: {millify(currency.marketCap)}
+                Market cap: {`${millify(currency.marketCap)} USD`}
             </p>
             <p>
                 Daily change: {millify(currency.change)}

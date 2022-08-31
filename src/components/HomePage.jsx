@@ -19,11 +19,21 @@ function HomePage() {
     return <>
         <Typography.Title level={2}>Global Crypto Stats</Typography.Title>
         <Row gutter={[10, 10]}>
-            <Col span={12}><Card><Statistic title="Total Cryptocurrencies" value={millify(globalStats.total)}/></Card></Col>
-            <Col span={12}><Card><Statistic title="Total Exchanges" value={globalStats.totalExchanges}/></Card></Col>
-            <Col span={12}><Card><Statistic title="Total Market Cap" value={millify(globalStats.totalMarketCap)}/></Card></Col>
-            <Col span={12}><Card><Statistic title="Total 24h Volume" value={millify(globalStats.total24hVolume)}/></Card></Col>
-            <Col span={12}><Card><Statistic title="Total Markets" value={millify(globalStats.totalMarkets)}/></Card></Col>
+            <Col span={12}>
+            <Card><Statistic title="Total Cryptocurrencies" value={millify(globalStats.total)}/></Card>
+            </Col>
+            <Col span={12}>
+            <Card><Statistic title="Total Exchanges" value={globalStats.totalExchanges}/></Card>
+            </Col>
+            <Col span={12}>
+            <Card><Statistic title="Total Market Cap" value={`${millify(globalStats.totalMarketCap)} USD`}/></Card>
+            </Col>
+            <Col span={12}>
+            <Card><Statistic title="Total 24h Volume" value={`${millify(globalStats.total24hVolume)} USD`}/></Card>
+            </Col>
+            <Col span={12}>
+            <Card><Statistic title="Total Markets" value={millify(globalStats.totalMarkets)}/></Card>
+            </Col>
         </Row>
         <div className="home-heading-container">
             <Typography.Title level={2} className="home-title">
