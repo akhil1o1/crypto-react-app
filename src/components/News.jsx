@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { Select, Typography, Row, Col, Avatar, Card } from "antd";
+import { Select, Typography, Row, Col, Avatar, Card, Spin } from "antd";
 import moment from "moment";
 import { useGetCryptoNewsQuery } from "../services/cryptoNewsApi";
 import { useGetCryptosQuery } from "../services/cryptoApi";
@@ -17,7 +17,11 @@ function News({simplified}) {
 
     const demoImage= "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0vv-Up8EOfHvg-HWFmgFcUgN3sanGDUnU-g&usqp=CAU"; 
 
-    if(isFetching) return "loading....";
+    if(isFetching){
+        return <div style={{height:"100vh", display:"flex", alignItems:"center", justifyContent:"center"}}>
+        <Spin size="large"/>
+    </div>
+    }
 
     return <Row gutter={[24, 24]}>
     

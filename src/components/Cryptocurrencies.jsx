@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import millify from "millify";
 import {Link} from "react-router-dom";
-import { Card, Row, Col, Input } from "antd";
+import { Card, Row, Col, Input, Spin } from "antd";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 
 function Cryptocurrencies({simplified}) {
@@ -18,7 +18,11 @@ function Cryptocurrencies({simplified}) {
         console.log("useEffect ran");
     },[cryptosList, searchTerm]);
 
-    if(isFetching) return "loading...";
+    if(isFetching){
+        return <div style={{height:"100vh", display:"flex", alignItems:"center", justifyContent:"center"}}>
+        <Spin size="large"/>
+    </div>
+    }
 
    console.log(searchTerm);
 
