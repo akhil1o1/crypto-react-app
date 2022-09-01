@@ -1,6 +1,6 @@
 import React from "react";
 import { Routes, Route } from 'react-router-dom';
-import { Layout, Typography, Space } from "antd";
+import { Layout } from "antd";
 import "./App.css";
 import Navbar from './components/Navbar';
 import HomePage from "./components/HomePage";

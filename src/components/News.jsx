@@ -52,8 +52,8 @@ function News({simplified}) {
                                 <div className="news-image-container">
                                 <Text>
                                     {
-                                        news.description.length>300 ? news.description.substring(0, 300)+"..."
-                                        : news.description
+                                        news.description.length>300 ? `${news.description.substring(0, 300)}...`
+                                        : `${news.description}...`
                                     }
                                 </Text>
                                     <img className="news-image" style={{width:"10%", height:"10%", marginBottom:"5px"}} src={news?.image?.thumbnail?.contentUrl || demoImage} alt="news"/>
