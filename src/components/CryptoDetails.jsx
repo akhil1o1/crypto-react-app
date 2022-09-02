@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import HTMLReactParser from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import millify from 'millify';
-import { Col, Row, Typography, Select, Spin } from 'antd';
+import { Col, Typography, Select, Spin } from 'antd';
 import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, NumberOutlined, ThunderboltOutlined } from '@ant-design/icons';
 
 import { useGetCryptoDetailsQuery } from '../services/cryptoApi';
@@ -28,19 +28,19 @@ function CryptoDetails() {
     const time = ['3h', '24h', '7d', '30d', '1y', '3m', '3y', '5y'];
 
     const stats = [
-    { title: 'Price to USD', value: `USD ${cryptoDetails.price && millify(cryptoDetails.price)}`, icon: <DollarCircleOutlined /> },
+    { title: 'Price to USD', value: `$ ${cryptoDetails.price && millify(cryptoDetails.price)}`, icon: <DollarCircleOutlined /> },
     { title: 'Rank', value: cryptoDetails.rank, icon: <NumberOutlined /> },
-    { title: '24h Volume', value: `USD ${cryptoDetails.volume && millify(cryptoDetails.volume)}`, icon: <ThunderboltOutlined /> },
-    { title: 'Market Cap', value: `USD ${cryptoDetails.marketCap && millify(cryptoDetails.marketCap)}`, icon: <DollarCircleOutlined /> },
-    { title: 'All-time-high(daily avg.)', value: `USD ${millify(cryptoDetails.allTimeHigh.price)}`, icon: <TrophyOutlined /> },
+    { title: '24h Volume', value: `$ ${cryptoDetails.volume && millify(cryptoDetails.volume)}`, icon: <ThunderboltOutlined /> },
+    { title: 'Market Cap', value: `$ ${cryptoDetails.marketCap && millify(cryptoDetails.marketCap)}`, icon: <DollarCircleOutlined /> },
+    { title: 'All-time-high(daily avg.)', value: `$ ${millify(cryptoDetails.allTimeHigh.price)}`, icon: <TrophyOutlined /> },
     ];
 
     const genericStats = [
     { title: 'Number Of Markets', value: cryptoDetails.numberOfMarkets, icon: <FundOutlined /> },
     { title: 'Number Of Exchanges', value: cryptoDetails.numberOfExchanges, icon: <MoneyCollectOutlined /> },
-    { title: 'Aprroved Supply', value: cryptoDetails.approvedSupply ? <CheckOutlined /> : <StopOutlined />, icon: <ExclamationCircleOutlined /> },
-    { title: 'Total Supply', value: `$ ${millify(cryptoDetails.totalSupply)}`, icon: <ExclamationCircleOutlined /> },
-    { title: 'Circulating Supply', value: `$ ${millify(cryptoDetails.circulatingSupply)}`, icon: <ExclamationCircleOutlined /> },
+    { title: 'Aprroved Supply', value: cryptoDetails.supply.confirmed ? <CheckOutlined /> : <StopOutlined />, icon: <ExclamationCircleOutlined /> },
+    { title: 'Total Supply', value: `$ ${millify(cryptoDetails.supply.total)}`, icon: <ExclamationCircleOutlined /> },
+    { title: 'Circulating Supply', value: `$ ${millify(cryptoDetails.supply.circulating)}`, icon: <ExclamationCircleOutlined /> },
     ];
     
 
@@ -63,6 +63,46 @@ function CryptoDetails() {
         }
         </Select>
         {/* line Chart */}
+        <Col className="stats-container">
+            <Col className="coin-value-statistics">
+                <Col className="coin-value-statistics-heading">
+                    <Title level={3} className="coin-details-heading">
+                        {cryptoDetails.name} Value Statisitics
+                    </Title>
+                    <Text>
+                        An overview showing stats of the {cryptoDetails.name}
+                    </Text>
+                </Col>
+                {stats.map(({icon, title, value}) =>(
+                    <Col className="coin-stats">
+                        <Col className="coin-stats-name">
+                            <Text>{icon}</Text>
+                            <Text>{title}</Text>
+                        </Col>
+                        <Text className="stats">{value}</Text>
+                    </Col>
+                ))}
+            </Col>
+            <Col className="other-stats-info">
+                <Col className="coin-value-statistics-heading">
+                    <Title level={3} className="coin-details-heading">
+                        All crypto Statisitics
+                    </Title>
+                    <Text>
+                        An overview showing stats of all Cryptos
+                    </Text>
+                </Col>
+                {genericStats.map(({icon, title, value}) =>(
+                    <Col className="coin-stats">
+                        <Col className="coin-stats-name">
+                            <Text>{icon}</Text>
+                            <Text>{title}</Text>
+                        </Col>
+                        <Text className="stats">{value}</Text>
+                    </Col>
+                ))}
+            </Col>
+        </Col>
     </Col>
 }
 
