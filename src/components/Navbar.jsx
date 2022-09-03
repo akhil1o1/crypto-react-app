@@ -26,11 +26,6 @@ function Navbar() {
                         Cryptocurrencies
                     </Link>
                 </Menu.Item>
-                <Menu.Item icon={<MoneyCollectOutlined/>} key={"exchanges"}>
-                    <Link to="/exchanges">
-                        Exchanges
-                    </Link>
-                </Menu.Item>
                 <Menu.Item icon={<BulbOutlined/>} key={"news"}>
                     <Link to="/news">
                         News

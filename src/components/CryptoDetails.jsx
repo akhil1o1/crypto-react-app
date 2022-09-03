@@ -5,7 +5,9 @@ import millify from 'millify';
 import { Col, Typography, Select, Spin, Divider, Row } from 'antd';
 import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, SwapOutlined, StopOutlined, TrophyOutlined, CheckOutlined, NumberOutlined, ThunderboltOutlined, RetweetOutlined, CheckCircleOutlined } from '@ant-design/icons';
 
-import { useGetCryptoDetailsQuery } from '../services/cryptoApi';
+import { useGetCryptoDetailsQuery, useGetCryptoPriceHistoryQuery } from '../services/cryptoApi';
+
+import LineChart from './LineChart';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -15,6 +17,7 @@ function CryptoDetails() {
     const { coinId } = useParams();
     const [ timePeriod, setTimePeriod ] = useState("7d"); 
     const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
+    const { data : coinHistory } = useGetCryptoPriceHistoryQuery({timePeriod, coinId}); 
 
     if(isFetching){
         return <div style={{height:"100vh", display:"flex", alignItems:"center", justifyContent:"center"}}>
@@ -63,7 +66,7 @@ function CryptoDetails() {
         }
         </Select>
         <Divider/>
-        {/* line Chart */}
+        <LineChart coinHistory={coinHistory} coinPrice={millify(cryptoDetails.price)} coinName={cryptoDetails.name}/>
         <Col className="stats-container">
             <Col className="coin-value-statistics">
                 <Col className="coin-value-statistics-heading">
@@ -87,10 +90,10 @@ function CryptoDetails() {
             <Col className="other-stats-info">
                 <Col className="coin-value-statistics-heading">
                     <Title level={3} className="coin-details-heading">
-                        All crypto Statisitics
+                        Other {cryptoDetails.name} stats
                     </Title>
                     <Text>
-                        An overview showing stats of all Cryptos
+                        Market, availability and circulation stats
                     </Text>
                 </Col>
                 {genericStats.map(({icon, title, value}) =>(
@@ -113,7 +116,7 @@ function CryptoDetails() {
             </Col>
             <Col className="coin-links">
                     <Title level={3} className="coin-details-heading">
-                        {cryptoDetails.name} Links
+                        Useful {cryptoDetails.name} Links
                     </Title>
                     {cryptoDetails.links.map((link) =>(
                         <Row className="coin-link" key={link.name}>
