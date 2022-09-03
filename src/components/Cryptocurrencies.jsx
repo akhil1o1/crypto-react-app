@@ -28,7 +28,7 @@ function Cryptocurrencies({simplified}) {
 
     return <>
         {simplified ? null : <div className="search-crypto">
-            <Input placeholder="search cryptocurrencies" onChange={(e)=> setSearchTerm(e.target.value)}/>
+            <Input autoFocus placeholder="search cryptocurrencies" onChange={(e)=> setSearchTerm(e.target.value)}/>
         </div>}
         <Row gutter={[32, 32]} className="crypto-card-container">
         {cryptos?.map((currency) => (

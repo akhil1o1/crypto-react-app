@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import HTMLReactParser from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import millify from 'millify';
-import { Col, Typography, Select, Spin } from 'antd';
-import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, ExclamationCircleOutlined, StopOutlined, TrophyOutlined, CheckOutlined, NumberOutlined, ThunderboltOutlined } from '@ant-design/icons';
+import { Col, Typography, Select, Spin, Divider, Row } from 'antd';
+import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, SwapOutlined, StopOutlined, TrophyOutlined, CheckOutlined, NumberOutlined, ThunderboltOutlined, RetweetOutlined, CheckCircleOutlined } from '@ant-design/icons';
 
 import { useGetCryptoDetailsQuery } from '../services/cryptoApi';
 
@@ -38,9 +38,9 @@ function CryptoDetails() {
     const genericStats = [
     { title: 'Number Of Markets', value: cryptoDetails.numberOfMarkets, icon: <FundOutlined /> },
     { title: 'Number Of Exchanges', value: cryptoDetails.numberOfExchanges, icon: <MoneyCollectOutlined /> },
-    { title: 'Aprroved Supply', value: cryptoDetails.supply.confirmed ? <CheckOutlined /> : <StopOutlined />, icon: <ExclamationCircleOutlined /> },
-    { title: 'Total Supply', value: `$ ${millify(cryptoDetails.supply.total)}`, icon: <ExclamationCircleOutlined /> },
-    { title: 'Circulating Supply', value: `$ ${millify(cryptoDetails.supply.circulating)}`, icon: <ExclamationCircleOutlined /> },
+    { title: 'Aprroved Supply', value: cryptoDetails.supply.confirmed ? <CheckOutlined /> : <StopOutlined />, icon: <CheckCircleOutlined /> },
+    { title: 'Total Supply', value: `$ ${millify(cryptoDetails.supply.total)}`, icon: <SwapOutlined /> },
+    { title: 'Circulating Supply', value: `$ ${millify(cryptoDetails.supply.circulating)}`, icon: <RetweetOutlined /> },
     ];
     
 
@@ -62,6 +62,7 @@ function CryptoDetails() {
             time.map((period) => <Option key={period} value={period}>{period}</Option>)
         }
         </Select>
+        <Divider/>
         {/* line Chart */}
         <Col className="stats-container">
             <Col className="coin-value-statistics">
@@ -101,6 +102,27 @@ function CryptoDetails() {
                         <Text className="stats">{value}</Text>
                     </Col>
                 ))}
+            </Col>
+        </Col>
+        <Col className="coin-desc-link">
+            <Col className="coin-desc">
+                <Title level={3} className="coin-details-heading">
+                    What is {cryptoDetails.name} ?
+                </Title>
+                {HTMLReactParser(cryptoDetails.description)}
+            </Col>
+            <Col className="coin-links">
+                    <Title level={3} className="coin-details-heading">
+                        {cryptoDetails.name} Links
+                    </Title>
+                    {cryptoDetails.links.map((link) =>(
+                        <Row className="coin-link" key={link.name}>
+                            <Title level={5} className="link-name">{link.type}</Title>
+                            <a href={link.url} target="_blank" rel="noreferrer">
+                                {link.name}
+                            </a>
+                        </Row>
+                    ))}
             </Col>
         </Col>
     </Col>
