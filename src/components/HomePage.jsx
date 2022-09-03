@@ -1,6 +1,6 @@
 import React from "react";
 import millify from "millify";
-import { Typography, Row, Col, Statistic, Card, Spin } from "antd";
+import { Typography, Row, Col, Statistic, Divider, Spin } from "antd";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import { Link } from "react-router-dom";
 import Cryptocurrencies from "./Cryptocurrencies";
@@ -22,21 +22,22 @@ function HomePage() {
         <Typography.Title level={2}>Global Crypto Stats</Typography.Title>
         <Row gutter={[10, 10]}>
             <Col span={12}>
-            <Card><Statistic title="Total Cryptocurrencies" value={millify(globalStats.total)}/></Card>
+            <Statistic title="Total Cryptocurrencies" value={millify(globalStats.total)}/>
             </Col>
             <Col span={12}>
-            <Card><Statistic title="Total Exchanges" value={globalStats.totalExchanges}/></Card>
+            <Statistic title="Total Exchanges" value={globalStats.totalExchanges}/>
             </Col>
             <Col span={12}>
-            <Card><Statistic title="Total Market Cap" value={`${millify(globalStats.totalMarketCap)} USD`}/></Card>
+            <Statistic title="Total Market Cap" value={`${millify(globalStats.totalMarketCap)} USD`}/>
             </Col>
             <Col span={12}>
-            <Card><Statistic title="Total 24h Volume" value={`${millify(globalStats.total24hVolume)} USD`}/></Card>
+            <Statistic title="Total 24h Volume" value={`${millify(globalStats.total24hVolume)} USD`}/>
             </Col>
             <Col span={12}>
-            <Card><Statistic title="Total Markets" value={millify(globalStats.totalMarkets)}/></Card>
+            <Statistic title="Total Markets" value={millify(globalStats.totalMarkets)}/>
             </Col>
         </Row>
+        <Divider/>
         <div className="home-heading-container">
             <Typography.Title level={2} className="home-title">
             Top 10 Cryptocurrencies in the world
@@ -45,7 +46,9 @@ function HomePage() {
             <Link to="/cryptocurrencies">show more</Link>
             </Typography.Title>
         </div>
+        <Divider/>
         <Cryptocurrencies simplified={true}/>
+        <Divider/>
         <div className="home-heading-container">
             <Typography.Title level={2} >
             Latest Crypto News
@@ -54,6 +57,7 @@ function HomePage() {
             <Link to="/news">show more</Link>
             </Typography.Title>
         </div>
+        <Divider/>
         <News simplified={true}/>
     </>
 }
