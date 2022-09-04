@@ -4,7 +4,6 @@ import { Layout } from "antd";
 import "./App.css";
 import Navbar from './components/Navbar';
 import HomePage from "./components/HomePage";
-import Exchanges from "./components/Exchanges";
 import CryptoDetails from "./components/CryptoDetails";
 import Cryptocurrencies from "./components/Cryptocurrencies";
 import News from "./components/News";
