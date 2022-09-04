@@ -66,7 +66,7 @@ function CryptoDetails() {
         }
         </Select>
         <Divider/>
-        <LineChart coinHistory={coinHistory} coinPrice={millify(cryptoDetails.price)} coinName={cryptoDetails.name}/>
+        <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails.price)} coinName={cryptoDetails.name}/>
         <Col className="stats-container">
             <Col className="coin-value-statistics">
                 <Col className="coin-value-statistics-heading">
@@ -78,7 +78,7 @@ function CryptoDetails() {
                     </Text>
                 </Col>
                 {stats.map(({icon, title, value}) =>(
-                    <Col className="coin-stats">
+                    <Col className="coin-stats" key={title}>
                         <Col className="coin-stats-name">
                             <Text>{icon}</Text>
                             <Text>{title}</Text>
@@ -97,7 +97,7 @@ function CryptoDetails() {
                     </Text>
                 </Col>
                 {genericStats.map(({icon, title, value}) =>(
-                    <Col className="coin-stats">
+                    <Col className="coin-stats" key={title}>
                         <Col className="coin-stats-name">
                             <Text>{icon}</Text>
                             <Text>{title}</Text>
