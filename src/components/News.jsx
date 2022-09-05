@@ -38,7 +38,7 @@ function News({simplified}) {
   <Option value="cryptocurrency">Cryptocurrency</Option>
     {
         data?.data?.coins?.map((currency)=>(
-            <Option value={currency.name}>{currency.name}</Option>
+            <Option value={currency.name} key={currency.name}>{currency.name}</Option>
         ))
     }
   </Select>
@@ -47,7 +47,7 @@ function News({simplified}) {
             {
                 cryptoNews?.value?.map((news, index)=>(
                         <Card hoverable className="news-card" type="inner"
-                        title={news.name}>
+                        title={news.name} key={news.name}>
                             <a href={news.url} target="_blank" rel="noreferrer">
                                 <div className="news-image-container">
                                 <Text>
