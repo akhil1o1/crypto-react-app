@@ -1,6 +1,9 @@
 import React from "react";
 import { Line } from "react-chartjs-2";
 import { Row, Col, Typography } from "antd";
+import { Chart as ChartJS, registerables } from 'chart.js';
+import millify from "millify";
+ChartJS.register(...registerables);
 const { Title } = Typography;
 
 function LineChart({coinHistory, currentPrice, coinName}) {
@@ -51,7 +54,7 @@ function LineChart({coinHistory, currentPrice, coinName}) {
                 {coinHistory?.data?.change} %
             </Title>
             <Title level={5} className="current-price">
-                Current {coinName} Price: $ {coinPrice}
+                Current {coinName} Price: $ {millify(coinPrice)}
             </Title>
         </Col>
         <Line data={data} options={options}/>

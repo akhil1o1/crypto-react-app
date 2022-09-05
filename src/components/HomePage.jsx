@@ -1,19 +1,18 @@
 import React from "react";
 import millify from "millify";
-import { Typography, Row, Col, Statistic, Divider, Spin } from "antd";
+import { Typography, Row, Col, Statistic, Divider } from "antd";
 import { useGetCryptosQuery } from "../services/cryptoApi";
 import { Link } from "react-router-dom";
 import Cryptocurrencies from "./Cryptocurrencies";
 import News from "./News";
+import Loader from "./Loader";
 
 function HomePage() {
     
     const { data, isFetching } = useGetCryptosQuery(10);
 
     if(isFetching){
-        return <div style={{height:"100vh", display:"flex", alignItems:"center", justifyContent:"center"}}>
-            <Spin size="large"/>
-        </div>
+        return <Loader/>
     }
     
     const globalStats = data.data.stats;

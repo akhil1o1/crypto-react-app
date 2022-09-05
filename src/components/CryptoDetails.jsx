@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 import HTMLReactParser from 'html-react-parser';
 import { useParams } from 'react-router-dom';
 import millify from 'millify';
-import { Col, Typography, Select, Spin, Divider, Row } from 'antd';
+import { Col, Typography, Select, Divider, Row } from 'antd';
 import { MoneyCollectOutlined, DollarCircleOutlined, FundOutlined, SwapOutlined, StopOutlined, TrophyOutlined, CheckOutlined, NumberOutlined, ThunderboltOutlined, RetweetOutlined, CheckCircleOutlined } from '@ant-design/icons';
 
 import { useGetCryptoDetailsQuery, useGetCryptoPriceHistoryQuery } from '../services/cryptoApi';
 
 import LineChart from './LineChart';
+import Loader from './Loader';
 
 const { Title, Text } = Typography;
 const { Option } = Select;
@@ -20,9 +21,7 @@ function CryptoDetails() {
     const { data : coinHistory } = useGetCryptoPriceHistoryQuery({timePeriod, coinId});  
 
     if(isFetching){
-        return <div style={{height:"100vh", display:"flex", alignItems:"center", justifyContent:"center"}}>
-        <Spin size="large"/>
-    </div>
+        return <Loader/>
     }
 
     const cryptoDetails = data?.data?.coin;

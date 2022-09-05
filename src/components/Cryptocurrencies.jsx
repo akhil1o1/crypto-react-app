@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import millify from "millify";
 import {Link} from "react-router-dom";
-import { Card, Row, Col, Input, Spin } from "antd";
+import { Card, Row, Col, Input } from "antd";
 import { useGetCryptosQuery } from "../services/cryptoApi";
+import Loader from "./Loader";
 
 function Cryptocurrencies({simplified}) {
 
@@ -19,9 +20,7 @@ function Cryptocurrencies({simplified}) {
     },[cryptosList, searchTerm]);
 
     if(isFetching){
-        return <div style={{height:"100vh", display:"flex", alignItems:"center", justifyContent:"center"}}>
-        <Spin size="large"/>
-    </div>
+        return <Loader/>
     }
 
    console.log(searchTerm);
